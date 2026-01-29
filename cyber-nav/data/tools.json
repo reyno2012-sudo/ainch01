@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "ChatGPT",
+    "description": "The AI that started it all. Versatile conversational AI for coding, writing, and analysis.",
+    "url": "https://chat.openai.com",
+    "category": "Chat",
+    "tags": ["Free", "Must Have", "LLM"]
+  },
+  {
+    "id": "2",
+    "name": "Midjourney",
+    "description": "Best-in-class AI image generation with artistic flair.",
+    "url": "https://midjourney.com",
+    "category": "Design",
+    "tags": ["Paid", "Art", "Image"]
+  },
+  {
+    "id": "3",
+    "name": "Claude",
+    "description": "Anthropic's helpful and harmless AI assistant, great for long contexts.",
+    "url": "https://claude.ai",
+    "category": "Chat",
+    "tags": ["Free", "Coding", "LLM"]
+  },
+  {
+    "id": "4",
+    "name": "GitHub Copilot",
+    "description": "Your AI pair programmer, integrated directly into your editor.",
+    "url": "https://github.com/features/copilot",
+    "category": "Dev",
+    "tags": ["Paid", "Coding", "Productivity"]
+  },
+  {
+    "id": "5",
+    "name": "Perplexity",
+    "description": "AI-powered search engine that provides direct answers with citations.",
+    "url": "https://perplexity.ai",
+    "category": "Search",
+    "tags": ["Free", "Research", "Search"]
+  },
+  {
+    "id": "6",
+    "name": "Vercel",
+    "description": "Develop. Preview. Ship. The best place to deploy Next.js apps.",
+    "url": "https://vercel.com",
+    "category": "Dev",
+    "tags": ["Free", "Deployment", "Web"]
+  }
+]
