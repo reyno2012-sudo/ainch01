@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+
+:root {
+  /* Light mode colors - warm, inviting palette */
+  --background: #FAFAFA;
+  --foreground: #1F2937;
+  --primary: #F59E0B;
+  --primary-dark: #D97706;
+  --secondary: #EC4899;
+  --accent: #8B5CF6;
+  --muted: #F3F4F6;
+  --border: #E5E7EB;
+  --card-bg: #FFFFFF;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode colors */
+    --background: #0F172A;
+    --foreground: #F1F5F9;
+    --primary: #FBBF24;
+    --primary-dark: #F59E0B;
+    --secondary: #F472B6;
+    --accent: #A78BFA;
+    --muted: #1E293B;
+    --border: #334155;
+    --card-bg: #1E293B;
+    --success: #34D399;
+    --warning: #FBBF24;
+    --error: #F87171;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ===================================
+   语义化工具类 (Semantic Utility Classes)
+   =================================== */
+
+/* 间距类 (Spacing Classes) */
+.vertical-gap-small {
+  @apply space-y-2;
+}
+
+.vertical-gap-regular {
+  @apply space-y-4;
+}
+
+.vertical-gap-large {
+  @apply space-y-8;
+}
+
+.horizontal-gap-small {
+  @apply space-x-2;
+}
+
+.horizontal-gap-regular {
+  @apply space-x-4;
+}
+
+/* 布局类 (Layout Classes) */
+.page-container {
+  @apply container mx-auto px-4;
+}
+
+.section-padding {
+  @apply py-20;
+}
+
+.content-center {
+  @apply max-w-4xl mx-auto text-center;
+}
+
+.grid-features {
+  @apply grid md:grid-cols-3 gap-8 max-w-6xl mx-auto;
+}
+
+.grid-stats {
+  @apply grid md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center;
+}
+
+.grid-footer {
+  @apply grid md:grid-cols-4 gap-8 mb-8;
+}
+
+/* 按钮类 (Button Classes) */
+.btn-primary {
+  @apply px-8 py-4 rounded-full gradient-primary text-white font-semibold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply px-8 py-4 rounded-full bg-[var(--card-bg)] border-2 border-[var(--primary)] text-[var(--primary)] font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all duration-300;
+}
+
+.btn-cta-large {
+  @apply inline-block px-10 py-5 rounded-full gradient-primary text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300;
+}
+
+/* 卡片类 (Card Classes) */
+.feature-card {
+  @apply bg-[var(--card-bg)] rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-[var(--border)];
+}
+
+.icon-circle-primary {
+  @apply w-16 h-16 rounded-full gradient-primary flex items-center justify-center mb-6 text-4xl;
+}
+
+.icon-circle-accent {
+  @apply w-16 h-16 rounded-full gradient-accent flex items-center justify-center mb-6 text-4xl;
+}
+
+.icon-circle-success {
+  @apply w-16 h-16 rounded-full bg-gradient-to-br from-[var(--success)] to-[var(--primary)] flex items-center justify-center mb-6 text-4xl;
+}
+
+/* 文本类 (Typography Classes) */
+.heading-hero {
+  @apply text-5xl md:text-7xl font-bold mb-6 animate-fade-in;
+}
+
+.heading-section {
+  @apply text-4xl md:text-5xl font-bold text-center mb-16;
+}
+
+.text-lead {
+  @apply text-xl md:text-2xl text-[var(--foreground)] opacity-80 mb-10 animate-fade-in;
+}
+
+.text-gradient-primary {
+  @apply gradient-primary bg-clip-text text-transparent;
+}
+
+.text-muted {
+  @apply text-[var(--foreground)] opacity-70;
+}
+
+.text-feature-description {
+  @apply text-[var(--foreground)] opacity-70 leading-relaxed;
+}
+
+.stat-number {
+  @apply text-5xl md:text-6xl font-bold gradient-primary bg-clip-text text-transparent mb-2;
+}
+
+/* 链接类 (Link Classes) */
+.footer-link {
+  @apply block text-[var(--foreground)] opacity-70 hover:opacity-100 hover:text-[var(--primary)] transition-colors;
+}
+
+.social-icon {
+  @apply w-10 h-10 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform;
+}
+
+/* 装饰类 (Decorative Classes) */
+.background-overlay-primary {
+  @apply absolute inset-0 gradient-primary opacity-10;
+}
+
+.background-overlay-accent {
+  @apply absolute inset-0 gradient-accent opacity-10;
+}
+
+.decorative-emoji {
+  @apply absolute text-6xl opacity-20 animate-float;
+}
+
+/* 响应式间距 (Responsive Spacing) */
+.hero-padding {
+  @apply py-20 md:py-32;
+}
+
+.button-group {
+  @apply flex flex-col sm:flex-row gap-4 justify-center animate-fade-in;
+}
