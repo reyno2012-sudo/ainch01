@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import NavBar from './components/layout/NavBar';
 import HeroSection from './components/hero/HeroSection';
+import ServerStatus from './components/ui/ServerStatus';
 import FeaturedCards from './components/featured/FeaturedCards';
 import NewsSidebar from './components/sidebar/NewsSidebar';
 import CategoryFilter from './components/tools/CategoryFilter';
@@ -33,6 +34,9 @@ export default function Dashboard() {
 
                 {/* 2. Search & Hero Section */}
                 <HeroSection />
+
+                {/* 2.1 Backend Status */}
+                <ServerStatus />
 
                 {/* 3. Featured Recommendations */}
                 <FeaturedCards />
