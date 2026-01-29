@@ -1,6 +1,11 @@
+
 {
-  "framework": "nextjs",
-  "installCommand": "cd cyber-nav && npm install",
-  "buildCommand": "cd cyber-nav && npm run build",
-  "outputDirectory": "cyber-nav/.next"
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index" }
+  ],
+  "functions": {
+    "api/index.py": {
+      "runtime": "vercel-python@0.0.6"
+    }
+  }
 }
