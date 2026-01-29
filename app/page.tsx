@@ -1,4 +1,5 @@
 'use client'; // 客户端组件标识（Next.js 13+ 必加）
+// Vercel Refresh: Force frontend rebuild
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
