@@ -1,44 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0a0a0a;
-  --color-foreground: #e0e0e0;
-
-  --color-neon-green: #00ff9f;
-  --color-neon-purple: #d946ef;
-  --color-neon-blue: #3b82f6;
-
-  --color-card-bg: rgba(17, 17, 17, 0.8);
-
-  --shadow-neon-green: 0 0 20px rgba(0, 255, 159, 0.3);
-  --shadow-neon-purple: 0 0 20px rgba(217, 70, 239, 0.4);
+    --color-background: #0a0a0a;
+    --color-foreground: #e0e0e0;
+    --color-neon-green: #00ff9f;
+    --color-neon-purple: #d946ef;
+    --color-neon-blue: #3b82f6;
+    --color-card-bg: rgba(17, 17, 17, 0.8);
+    --shadow-neon-green: 0 0 20px rgba(0, 255, 159, 0.3);
+    --shadow-neon-purple: 0 0 20px rgba(217, 70, 239, 0.4);
 }
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #e0e0e0;
+    --background: #0a0a0a;
+    --foreground: #e0e0e0;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-geist-mono), monospace;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-geist-mono), monospace;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+    background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+    background: #333;
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00ff9f;
+    background: #00ff9f;
 }
