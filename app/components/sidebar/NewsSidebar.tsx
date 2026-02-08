@@ -42,7 +42,7 @@ export default function NewsSidebar() {
             <div className="flex items-center justify-between mb-6">
                 <Link href="/ai-daily" className="font-bold text-white flex items-center gap-2 hover:text-neon-blue transition-colors">
                     <Flame className="text-orange-500" size={20} />
-                    AI 资讯
+                    AI 日报
                 </Link>
                 <Link href="/ai-daily" className="text-xs text-gray-500 cursor-pointer hover:text-white transition-colors">
                     更多 &gt;
