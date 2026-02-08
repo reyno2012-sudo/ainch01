@@ -5,46 +5,82 @@
     "description": "The AI that started it all. Versatile conversational AI for coding, writing, and analysis.",
     "url": "https://chat.openai.com",
     "category": "Chat",
-    "tags": ["Free", "Must Have", "LLM"]
+    "tags": [
+      "Free",
+      "Must Have",
+      "LLM"
+    ]
   },
   {
     "id": "2",
-    "name": "Midjourney",
-    "description": "Best-in-class AI image generation with artistic flair.",
-    "url": "https://midjourney.com",
-    "category": "Design",
-    "tags": ["Paid", "Art", "Image"]
+    "name": "Gemini",
+    "description": "Google's most capable AI model, built from the ground up to be multimodal.",
+    "url": "https://gemini.google.com",
+    "category": "Chat",
+    "tags": [
+      "Free",
+      "Google",
+      "Multimodal"
+    ]
   },
   {
     "id": "3",
-    "name": "Claude",
-    "description": "Anthropic's helpful and harmless AI assistant, great for long contexts.",
-    "url": "https://claude.ai",
-    "category": "Chat",
-    "tags": ["Free", "Coding", "LLM"]
-  },
-  {
-    "id": "4",
-    "name": "GitHub Copilot",
-    "description": "Your AI pair programmer, integrated directly into your editor.",
-    "url": "https://github.com/features/copilot",
-    "category": "Dev",
-    "tags": ["Paid", "Coding", "Productivity"]
-  },
-  {
-    "id": "5",
     "name": "Perplexity",
     "description": "AI-powered search engine that provides direct answers with citations.",
     "url": "https://perplexity.ai",
     "category": "Search",
-    "tags": ["Free", "Research", "Search"]
+    "tags": [
+      "Free",
+      "Research",
+      "Search"
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Claude",
+    "description": "Anthropic's helpful and harmless AI assistant, great for long contexts.",
+    "url": "https://claude.ai",
+    "category": "Chat",
+    "tags": [
+      "Free",
+      "Coding",
+      "LLM"
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Grok",
+    "description": "An AI modeled after the Hitchhiker's Guide to the Galaxy, with real-time knowledge.",
+    "url": "https://x.ai",
+    "category": "Chat",
+    "tags": [
+      "Paid",
+      "Real-time",
+      "Fun"
+    ]
   },
   {
     "id": "6",
-    "name": "Vercel",
-    "description": "Develop. Preview. Ship. The best place to deploy Next.js apps.",
-    "url": "https://vercel.com",
-    "category": "Dev",
-    "tags": ["Free", "Deployment", "Web"]
+    "name": "Midjourney",
+    "description": "Best-in-class AI image generation with artistic flair.",
+    "url": "https://midjourney.com",
+    "category": "Design",
+    "tags": [
+      "Paid",
+      "Art",
+      "Image"
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Figma",
+    "description": "The collaborative interface design tool. Now with AI-powered features.",
+    "url": "https://www.figma.com",
+    "category": "Design",
+    "tags": [
+      "Freemium",
+      "Design",
+      "UI/UX"
+    ]
   }
 ]
