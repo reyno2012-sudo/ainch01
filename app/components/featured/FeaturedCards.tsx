@@ -22,8 +22,8 @@ const features = [
         text: "text-orange-400"
     },
     {
-        title: "Claude 101",
-        subtitle: "官方入门教程中文版",
+        title: "Prompt库",
+        subtitle: "精选优质提示词",
         icon: BookOpen,
         color: "from-green-500/20 to-emerald-500/20",
         border: "border-green-500/30",
