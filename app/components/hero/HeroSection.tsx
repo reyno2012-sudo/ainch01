@@ -8,10 +8,10 @@ export default function HeroSection() {
         <div className="w-full flex flex-col items-center justify-center py-16 md:py-24 text-center px-4">
             {/* Title / Slogan */}
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-                探索 <span className="text-neon-blue">AI</span>，从这里开始
+                四爷 <span className="text-neon-blue">AI</span> 栈，从这里开始
             </h1>
             <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10">
-                分享最新最有趣的 AI 工具、资源、信息，打造最强 AI 社区
+                分享最新最有趣的 AI 工具、资源、信息，打造最强AI全栈
             </p>
 
             {/* Search Bar */}
@@ -36,7 +36,7 @@ export default function HeroSection() {
             {/* Hot Tags */}
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
                 <span>热门搜索:</span>
-                {["Vibe Coding", "AI学习路线", "AI项目", "AI编程工具", "DeepSeek"].map((tag, i) => (
+                {["Vibe Coding", "AIGC", "Prompt", "编程工具", "Gemini"].map((tag, i) => (
                     <span
                         key={i}
                         className="text-neon-blue hover:text-white cursor-pointer hover:underline transition-colors"
