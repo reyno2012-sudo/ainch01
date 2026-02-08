@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+// import "./styles.css";
 
 export const metadata: Metadata = {
   title: "PawsHome - 宠物领养平台",
@@ -7,17 +7,15 @@ export const metadata: Metadata = {
   keywords: ["宠物领养", "领养猫狗", "宠物救助", "动物福利"],
 };
 
-export default function RootLayout({
+export default function AdoptionLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
-      <body className="antialiased">
-        {children}
-      </body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }
 
