@@ -4,7 +4,7 @@ import { Flame } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { NewsItem } from '@/data/ai-daily-news'; // Reuse interface or define new one
+import { aiDailyNews, NewsItem } from '@/data/ai-daily-news'; // Reuse interface or define new one
 
 export default function NewsSidebar() {
     const [news, setNews] = useState<NewsItem[]>([]);
@@ -12,19 +12,23 @@ export default function NewsSidebar() {
 
     useEffect(() => {
         async function fetchNews() {
-            const { data, error } = await supabase
-                .from('ai_news')
-                .select('*')
-                .order('date', { ascending: false })
-                .limit(7);
+            try {
+                const { data, error } = await supabase
+                    .from('ai_news')
+                    .select('*')
+                    .order('date', { ascending: false })
+                    .limit(7);
 
-            if (data) {
-                // Map Supabase data to NewsItem structure if needed, or use directly
-                // Assuming database columns match NewsItem fields
-                setNews(data as any[]);
-            } else {
-                console.error("Error fetching news:", error);
-                // Fallback to local data or empty state if fetch fails is optional
+                if (data && data.length > 0) {
+                    setNews(data as any[]);
+                } else {
+                    // Fallback to local data if DB is empty or error
+                    console.log("Using fallback data");
+                    setNews(aiDailyNews.slice(0, 5));
+                }
+            } catch (e) {
+                console.error("Fetch error, using fallback", e);
+                setNews(aiDailyNews.slice(0, 5));
             }
         }
 
