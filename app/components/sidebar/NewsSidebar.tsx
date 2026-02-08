@@ -1,32 +1,53 @@
 'use client';
 
-import { Flame, ExternalLink } from 'lucide-react';
+import { Flame } from 'lucide-react';
 import Link from 'next/link';
-
-const newsItems = [
-    { id: 1, title: "Kimi K2.5 Agent 助力高效办公: Excel 处理能力提升", hot: true },
-    { id: 2, title: "OpenAI 拟开发“仅限真人”的社交媒体新格局", hot: true },
-    { id: 3, title: "Optimus 3 一季度发，马斯克：比中指功能已上线", hot: false },
-    { id: 4, title: "谷歌 Gemini 3.5 泄露：代号 Snow Bunny", hot: false },
-    { id: 5, title: "Meta 步入“交付年”，超级智能实体眼镜曝光", hot: false },
-    { id: 6, title: "三星 2025 年 Q4 营业利润腰斩，AI芯片供不应求", hot: false },
-    { id: 7, title: "Google Chrome 迎来 Gemini “自动浏览”时代", hot: false },
-];
+import { useEffect, useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
+import { NewsItem } from '@/data/ai-daily-news'; // Reuse interface or define new one
 
 export default function NewsSidebar() {
+    const [news, setNews] = useState<NewsItem[]>([]);
+    const supabase = createClient();
+
+    useEffect(() => {
+        async function fetchNews() {
+            const { data, error } = await supabase
+                .from('ai_news')
+                .select('*')
+                .order('date', { ascending: false })
+                .limit(7);
+
+            if (data) {
+                // Map Supabase data to NewsItem structure if needed, or use directly
+                // Assuming database columns match NewsItem fields
+                setNews(data as any[]);
+            } else {
+                console.error("Error fetching news:", error);
+                // Fallback to local data or empty state if fetch fails is optional
+            }
+        }
+
+        fetchNews();
+    }, []);
+
+    const sidebarNews = news.length > 0 ? news : [];
+
     return (
         <aside className="bg-[#111111]/50 border border-white/5 rounded-2xl p-6 h-fit sticky top-24">
             <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-white flex items-center gap-2">
+                <Link href="/ai-daily" className="font-bold text-white flex items-center gap-2 hover:text-neon-blue transition-colors">
                     <Flame className="text-orange-500" size={20} />
                     AI 资讯
-                </h3>
-                <span className="text-xs text-gray-500 cursor-pointer hover:text-white transition-colors">更多 &gt;</span>
+                </Link>
+                <Link href="/ai-daily" className="text-xs text-gray-500 cursor-pointer hover:text-white transition-colors">
+                    更多 &gt;
+                </Link>
             </div>
 
             <div className="space-y-4">
-                {newsItems.map((item, index) => (
-                    <div key={item.id} className="group cursor-pointer">
+                {sidebarNews.map((item, index) => (
+                    <Link key={item.id} href="/ai-daily" className="group cursor-pointer block">
                         <div className="flex gap-3 items-start">
                             <span className={`text-sm font-mono font-bold w-4 ${index < 3 ? 'text-neon-green' : 'text-gray-600'}`}>
                                 {index + 1}
@@ -35,8 +56,13 @@ export default function NewsSidebar() {
                                 {item.title}
                             </p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
+                {sidebarNews.length === 0 && (
+                    <div className="text-center text-gray-500 py-4 text-sm">
+                        暂无资讯或加载中...
+                    </div>
+                )}
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/5">
