@@ -4,38 +4,50 @@ import { Flame } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { aiDailyNews, NewsItem } from '@/data/ai-daily-news'; // Reuse interface or define new one
+import { aiDailyNews, NewsItem } from '@/data/ai-daily-news';
+
+function mergeNews(dbNews: NewsItem[] = []) {
+    const seen = new Set<string>();
+
+    return [...aiDailyNews, ...dbNews]
+        .filter((item) => {
+            const key = item.url || item.title;
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        })
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .slice(0, 7);
+}
 
 export default function NewsSidebar() {
-    const [news, setNews] = useState<NewsItem[]>([]);
-    const supabase = createClient();
+    const [news, setNews] = useState<NewsItem[]>(aiDailyNews.slice(0, 7));
 
     useEffect(() => {
         async function fetchNews() {
             try {
+                const supabase = createClient();
                 const { data, error } = await supabase
                     .from('ai_news')
                     .select('*')
                     .order('date', { ascending: false })
                     .limit(7);
 
-                if (data && data.length > 0) {
-                    setNews(data as any[]);
-                } else {
-                    // Fallback to local data if DB is empty or error
-                    console.log("Using fallback data");
-                    setNews(aiDailyNews.slice(0, 5));
+                if (error) {
+                    console.warn("Supabase news fetch failed, using local news", error);
                 }
+
+                setNews(mergeNews((data || []) as NewsItem[]));
             } catch (e) {
                 console.error("Fetch error, using fallback", e);
-                setNews(aiDailyNews.slice(0, 5));
+                setNews(mergeNews());
             }
         }
 
         fetchNews();
     }, []);
 
-    const sidebarNews = news.length > 0 ? news : [];
+    const sidebarNews = news.length > 0 ? news : aiDailyNews.slice(0, 7);
 
     return (
         <aside className="bg-[#111111]/50 border border-white/5 rounded-2xl p-6 h-fit sticky top-24">
